@@ -1,0 +1,36 @@
+=====================
+ Where are my files?
+=====================
+
+By default, the UCL-BLIC/rnaseq_variant_calling pipeline does not save large intermediate files to the
+results directory. This is to try to conserve disk space.
+
+These files can be found in the pipeline `work` directory if needed.
+Alternatively, re-run the pipeline using `-resume` in addition to one of
+the below command-line options and they will be copied into the results directory:
+
+`--saveStarBAM` and `--saveDedupBAM`
+The final BAM files created after the GATK Recalibration step (i.e, after STAR, markDup, addRG,
+Split&Trim and recalibration) are always saved and can be found in the 'recalibration/` folder.
+Specify the `--saveStarBAM` flag to also copy out BAM files right after the STAR alignment step, 
+and/or the `--saveDedupBAM` flag to also copy out BAM files after the markDuplicate step.
+
+`--saveTrimmed`
+Specify to save trimmed FastQ files to the results directory.
+
+-----------------------------------
+ Setting defaults in a config file
+-----------------------------------
+If you would always like these files to be saved without having to specify this on
+the command line, you can save the following to your personal configuration file
+(eg. `~/.nextflow/config`):
+
+params.saveTrimmed = true
+params.saveStarBAM = true
+params.saveDedupBAM = true
+
+For more help, see the following documentation:
+
+https://github.com/UCL-BLIC/rnaseq_variant-calling/blob/master/docs/usage.md
+https://www.nextflow.io/docs/latest/getstarted.html
+https://www.nextflow.io/docs/latest/config.html
