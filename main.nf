@@ -367,6 +367,7 @@ process splitandtrim {
     script:
     """
     gatk SplitNCigarReads \\
+	--TMP_DIR tmp \\
 	-I $markdup_bam \\
 	-R $params.fasta \\
 	-O ${sample}_split.bam \\
