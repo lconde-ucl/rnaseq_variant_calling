@@ -4,7 +4,7 @@
 The typical command for running the pipeline is as follows:
 ```bash
 module load blic-modules
-module load nextflow
+module load nextflow_rnaseq_variant_calling
 
 nextflow_rnaseq_variant_calling --reads '*_R{1,2}.fastq.gz' --genome hg38
 ```
